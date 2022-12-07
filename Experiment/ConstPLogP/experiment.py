@@ -54,12 +54,12 @@ def search(seed_smiles, n_iter, sampler, out_dir, out_filename, th):
 
 def run_exp(cfg):
     seed_df = pd.read_csv(hydra.utils.get_original_cwd()
-                          + f"/Experiment/{REWARD_NAME}/zinc-{REWARD_NAME.lower()}-range0607.csv")
+                          + f"/Experiment/{REWARD_NAME}/zinc-plogp-min800.csv")
     seed_list = seed_df["SMILES"].to_list()[:800]
 
     for i, smiles in enumerate(seed_list):
         try:
-            search(seed_smiles=smiles, n_iter=cfg["exp"]["n_iter"], sampler=Sampler(cfg), out_dir=OUT_DIR,
+            search(seed_smiles=smiles, n_iter=cfg["exp"]["n_iter"], sampler=Sampler(cfg, model_dir=cfg["exp"]["model_dir"], model_ver=cfg["exp"]["model_ver"]), out_dir=OUT_DIR,
                    out_filename=f"result{i}.csv", th=0.6)
         except:
             pass
@@ -101,8 +101,8 @@ def evaluate(cfg, n=200):
 
 @hydra.main(config_path="../../config/", config_name="config")
 def main(cfg: DictConfig):
-    # run_exp(cfg)
-    evaluate(cfg, n=800)
+    run_exp(cfg)
+    # evaluate(cfg, n=800)
 
 
 if __name__ == '__main__':

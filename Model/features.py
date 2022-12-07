@@ -78,19 +78,17 @@ def make_vocabulary(out_path="data/features/", parse_type="brics"):
                 vocab_list.append(Chem.MolToSmiles(fmol, isomericSmiles=False))
 
     vocab_list = collections.Counter(vocab_list)
-    with open(out_path+"ver2/vocab-freq-ver2.pickle", mode="wb") as f:
-        pickle.dump(vocab_list, f)
+    # with open(out_path+f"ver2/vocab-{parse_type}-ver2.pickle", mode="wb") as f:
+    #     pickle.dump(vocab_list, f)
 
-
-
-    # vocab_list = list(set(vocab_list))
-    # with open(out_path+f"vocab-{parse_type}-ver2.smi", mode="w") as f:
-    #     for smiles in vocab_list:
-    #         f.write(smiles+"\n")
+    vocab_list = list(set(vocab_list))
+    with open(out_path+f"ver2/vocab-{parse_type}-ver2.smi", mode="w") as f:
+        for smiles in vocab_list:
+            f.write(smiles+"\n")
 
 
 def make_features(n, outpath="data/features/ver2/"):
-    fragment_list = read_smilesset("data/features/freed/vocab-freed.smi")[:n]
+    fragment_list = read_smilesset("data/features/ver2/vocab-ring-ver2.smi")[:n]
 
     graph_list = []
     label_list = []
@@ -176,9 +174,8 @@ def vocab_test():
 
 
 def main():
-    # make_dglgraph()
-    make_vocabulary(parse_type="ring")
-    # make_features(n=1000, outpath="data/features/freed/")
+    # make_vocabulary(parse_type="ring")
+    make_features(n=100000, outpath="data/features/ver2/")
 
 
 if __name__ == '__main__':
