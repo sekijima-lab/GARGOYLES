@@ -71,12 +71,12 @@ def accuracy(output: torch.Tensor, target: torch.Tensor, topk=(1,)) -> List[torc
 
 def train(cfg: DictConfig) -> None:
     # Dataset setting
-    path = "/data/features/freed/"
-    with open(hydra.utils.get_original_cwd() + path+"dgl-graph.pickle", mode="rb") as f:
+    path = "/data/features/ver2/"
+    with open(hydra.utils.get_original_cwd() + path +"dgl-graph.pickle", mode="rb") as f:
         graph_list = pickle.load(f)
-    with open(hydra.utils.get_original_cwd() + path+"label.pickle", mode="rb") as f:
+    with open(hydra.utils.get_original_cwd() + path +"label.pickle", mode="rb") as f:
         label_list = pickle.load(f)
-    with open(hydra.utils.get_original_cwd() + path+"num-node.pickle", mode="rb") as f:
+    with open(hydra.utils.get_original_cwd() + path +"num-node.pickle", mode="rb") as f:
         num_node_list = pickle.load(f)
 
     sp = int(len(graph_list)*1)

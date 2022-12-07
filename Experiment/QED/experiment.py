@@ -87,7 +87,7 @@ def evaluate(cfg, n=200):
     nov_list = []
     uni_list = []
     sc_list = []
-    seed_df = pd.read_csv(hydra.utils.get_original_cwd() + f"/zinc-{REWARD_NAME.lower()}-range0607.csv")
+    seed_df = pd.read_csv(hydra.utils.get_original_cwd() + f"/Experiment/QED/zinc-{REWARD_NAME.lower()}-range0607.csv")
     seed_qed = seed_df[REWARD_NAME].to_list()
 
     for i in tqdm(range(n)):
@@ -214,8 +214,8 @@ def plot_step(n):
 
 @hydra.main(config_path="../../config/", config_name="config")
 def main(cfg: DictConfig):
-    # run_exp(cfg)
-    evaluate(cfg, n=100)
+    run_exp(cfg)
+    # evaluate(cfg, n=100)
     # calc_prop(cfg, n=100)
     # plot_smiles(10)
     # plot_step(0)
