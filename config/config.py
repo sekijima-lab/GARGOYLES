@@ -58,31 +58,6 @@ class SamplingConfig:
     seed_smiles: str = "C"
 
 
-# @dataclass
-# class RLConfig:
-#     init_smiles: str = "CCOc1ccc(OCC)c([C@H]2C(C#N)=C(N)N(c3ccccc3C(F)(F)F)C3=C2C(=O)CCC3)c1"
-#     vocab: str = "/data/vocabulary/vocab-ring.pickle"
-#     model_ver_frag: int = 20
-#     model_ver_value: int = 0
-#     model_dir: str = "/ckpt/pretrain/frag/normal/"
-#     max_ep_len: int = 10  # max timesteps in one episode
-#     max_training_timesteps: int = int(3e6)  # break training loop if timeteps > max_training_timesteps
-#     print_freq: int = max_ep_len * 64  # print avg reward in the interval (in num timesteps)
-#     log_freq: int = max_ep_len * 2  # log avg reward in the interval (in num timesteps)
-#     save_model_freq: int = 1000  # save model frequency (in num timesteps)
-#     action_std: float = 0.6  # starting std for action distribution (Multivariate Normal)
-#     update_timestep: int = max_ep_len * 64  # update policy every n timesteps
-#     K_epochs: int = 10  # update policy for K epochs in one PPO update
-#     eps_clip: float = 0.2  # clip parameter for PPO
-#     gamma: float = 0.99  # discount factor
-#     lr_actor: float = 0.0003  # learning rate for actor network
-#     lr_critic: float = 0.001  # learning rate for critic network
-#     random_seed: float = 0  # set random seed if required (0 = no random seed)
-#     ckpt: str = "/ckpt/rl/"
-#     log_dir: str = "/log/rl/"
-#     log_filename: str = "ppo.txt"
-
-
 @dataclass
 class ExperimentConfig:
     n_iter: int = 20
