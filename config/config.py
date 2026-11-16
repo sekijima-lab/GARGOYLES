@@ -1,6 +1,7 @@
 from hydra.core.config_store import ConfigStore
 from dataclasses import dataclass
 from typing import Tuple
+import math
 from Utils.mol_utils import ATOM_IDX, BOND_IDX
 
 
@@ -69,6 +70,7 @@ class ExperimentConfig:
 @dataclass
 class MCTSConfig:
     n_step: int = 1000
+    n_step_fine: int = 20
     n_iter: int = 3
     seq_len: int = 25
     in_smiles_file: str = "/Data/input/init_smiles.smi" #TODO: merge to data_dir
@@ -86,6 +88,7 @@ class MCTSConfig:
     tanimoto_threshold: float = 0.0
     output_fname: str = "output.csv"
     work_space: str = "/wkdir/0/"
+    init_smiles: str = "c1ccccc1"
     
 
 
